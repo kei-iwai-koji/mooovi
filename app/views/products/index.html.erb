@@ -19,9 +19,18 @@
                         <%= product.title %>
                       </h3>
                       <p class="text-small">
+                        <% if product.reviews.present? %>
+                        <!-- もしreviewが存在したら -->
                         <span class="rating-star">
-                          <i class="star-actived rate-[ここに評価を表示]0"></i>
+                          <i class="star-actived rate-<%= product.review_average %>0"></i>
+                          <!-- product_idに紐づくreviewのrateカラムの値を平均して四捨五入 -->
                         </span>
+                        <% else %>
+                        <!-- 存在しなかったら -->
+                        <span class="rating-star">
+                          <i class="star-zctived rate-0"></i>
+                        </span>
+                        <% end %>
                       </p>
                     </div>
                   </li>
